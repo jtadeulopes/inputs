@@ -1,0 +1,38 @@
+= Inputs
+
+Add helpers to create text_field with masks.
+
+== Dependencies
+
+Plugin jRails http://github.com/aaronchi/jrails/tree/master
+
+  script/plugin install git://github.com/aaronchi/jrails.git
+
+== Installation
+
+  script/plugin install git://github.com/jtadeulopes/inputs.git
+
+== Usage
+
+Add in the head tag:
+  
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_inputs %>
+
+In form:
+
+  <%= masked_text_field(:user, :tel, :size => 13, :mask => '(99)9999-9999') %>
+
+Other Examples:
+
+  Date:
+    <%= masked_text_field(:user, :birth, :mask => '99/99/9999') %>  
+
+  CPF:
+    <%= masked_text_field(:user, :cpf, :mask => '999.999.999-99') %>  
+    
+Based on plugins:
+  Masked Input Plugin by Josh Bush http://digitalbush.com/projects/masked-input-plugin
+  JSMask by Ozéias Sant'ana http://github.com/ozeias/js_mask/tree/master
+
+Copyright (c) 2009 Jésus Lopes jtadeulopes@gmail.com, released under the MIT license
