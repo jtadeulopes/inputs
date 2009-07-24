@@ -1,13 +1,44 @@
 Inputs
 ======
 
-Introduction goes here.
+Adiciona novos helpers para criar mascaras em campos de formulário.
+
+Dependencias:
+=============
+
+  Plugin jRails <http://github.com/aaronchi/jrails/tree/master>
+
+  Caso não tenha instalado:
+
+    script/plugin install git://github.com/aaronchi/jrails.git
+
+Instalar Inputs:
+==============
+
+  script/plugin install git://github.com/jtadeulopes/inputs.git
 
 
-Example
-=======
+Como Usar:
+==========
 
-Example goes here.
+Adicionar dentro da tag head de sua view:
+  
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_inputs %>
 
+No formulário:
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+  <%= text_field_masked(:user, :tel, :mask => '(99)9999-9999') %>
+
+Outros exemplos:
+
+  Data:
+    <%= text_field_masked(:user, :birth, :mask => '99/99/9999') %>  
+
+  CPF:
+    <%= text_field_masked(:user, :cpf, :mask => '999.999.999-99') %>  
+    
+
+Baseado no plugin Masked Input Plugin para jQuery.
+
+Copyright (c) 2009 Jésus Lopes <jtadeulopes@gmail.com>, released under the MIT license
