@@ -1,7 +1,7 @@
 Inputs
 ======
 
-Adiciona helpers para criar mascaras em campos de formulário.
+Adiciona helpers para criar text_field com mascaras.
 
 Dependencias:
 =============
@@ -28,15 +28,15 @@ Dentro da tag head da view:
 
 Formulário:
 
-  <%= text_field_masked(:user, :tel, :mask => '(99)9999-9999') %>
+  <%= masked_text_field(:user, :tel, :mask => '(99)9999-9999') %>
 
 Outros exemplos:
 
   Data:
-    <%= text_field_masked(:user, :birth, :mask => '99/99/9999') %>  
+    <%= masked_text_field(:user, :birth, :mask => '99/99/9999') %>  
 
   CPF:
-    <%= text_field_masked(:user, :cpf, :mask => '999.999.999-99') %>  
+    <%= masked_text_field(:user, :cpf, :mask => '999.999.999-99') %>  
     
 
 Baseado nos plugins:
