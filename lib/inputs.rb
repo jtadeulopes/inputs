@@ -15,8 +15,21 @@ module Inputs
   def masked_text_field(object, method, options = {})
     return text_field(object, method, options) unless options.has_key?(:mask)
     mask = options.delete(:mask)
-    text_field(object, method, options) +
-    javascript_tag("$('##{object}_#{method}').mask('#{mask}');")
+    text_field(object, method, options) + 
+      javascript_tag("$('##{object}_#{method}').mask('#{mask}');")
+  end
+
+  #   price_us_text_field(:product, :price, :size => 10)
+  #
+  #   # => <input id="product_price" name="product[price]" size="10" type="text" />
+  #   # => <script type="text/javascript">
+  #         //<![CDATA[
+  #           $('#product_price').priceFormat();
+  #         //]]>
+  #       </script>
+  def price_us_text_field(object, method, options = {})
+    text_field(object, method, options) + 
+      javascript_tag("$('##{object}_#{method}').priceFormat();")
   end
 
   # Add required files
@@ -25,7 +38,7 @@ module Inputs
   # <%= javascript_include_inputs %>
   #
   def javascript_include_inputs
-    javascript_include_tag 'maskedinput'
+    javascript_include_tag 'maskedinput', 'price'
   end
 
 end

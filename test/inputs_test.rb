@@ -29,8 +29,13 @@ class InputsTest < Test::Unit::TestCase
     masked_text_field(:user, :birth)
   end
 
+  def test_price_us_text_field
+    assert_dom_equal %(<input name=\"product[price]\" size=\"10\" id=\"product_price\" type=\"text\" /><script type=\"text/javascript\">\n//<![CDATA[\n$('#product_price').priceFormat();\n//]]>\n</script>),
+    price_us_text_field(:product, :price, :size => 10)
+  end
+
   def test_javascript_include_inputs
-    assert_dom_equal %(<script src=\"/javascripts/maskedinput.js\" type=\"text/javascript\"></script>),
+    assert_dom_equal %(<script src=\"/javascripts/maskedinput.js\" type=\"text/javascript\"></script>\n<script src=\"/javascripts/price.js\" type=\"text/javascript\"></script>),
       javascript_include_inputs.gsub(/([0-9?])/,'')
   end
 
