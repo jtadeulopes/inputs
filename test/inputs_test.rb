@@ -24,15 +24,14 @@ class InputsTest < Test::Unit::TestCase
     masked_text_field(:user, :birth, :size => 10, :mask => '99/99/9999')
   end
 
-  def test_return_error_if_mask_option_nil
-    assert_raise RuntimeError do
-      masked_text_field(:user, :phone)
-    end
+  def test_return_text_field_default_if_mask_option_nil
+    assert_dom_equal %(<input name=\"user[birth]\" size=\"30\" id=\"user_birth\" type=\"text\" />),
+    masked_text_field(:user, :birth)
   end
 
   def test_javascript_include_inputs
-    assert_dom_equal %(<script src=\"/javascripts/maskedinput.js?1248409652\" type=\"text/javascript\"></script>),
-      javascript_include_inputs
+    assert_dom_equal %(<script src=\"/javascripts/maskedinput.js\" type=\"text/javascript\"></script>),
+      javascript_include_inputs.gsub(/([0-9?])/,'')
   end
 
 end

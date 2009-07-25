@@ -13,9 +13,8 @@ module Inputs
   #       </script>
   #
   def masked_text_field(object, method, options = {})
-    raise "Option mask is required" unless options.has_key?(:mask)
-    mask = options[:mask]
-    options.delete(:mask)
+    return text_field(object, method, options) unless options.has_key?(:mask)
+    mask = options.delete(:mask)
     text_field(object, method, options) +
     javascript_tag("$('##{object}_#{method}').mask('#{mask}');")
   end
