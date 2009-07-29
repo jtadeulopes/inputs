@@ -30,9 +30,11 @@ Other Examples:
 
   CPF:
     <%= masked_text_field(:user, :cpf, :mask => '999.999.999-99') %>  
-    
-Based on plugins:
-  Masked Input Plugin by Josh Bush http://digitalbush.com/projects/masked-input-plugin
-  JSMask by Ozéias Sant'ana http://github.com/ozeias/js_mask/tree/master
 
-Copyright (c) 2009 Jésus Lopes jtadeulopes@gmail.com, released under the MIT license
+  Masks for price, use:
+    <%= price_us_text_field(:product, :price, :size => 10) %>
+    
+Based on plugin:
+JSMask by Ozéias Sant'ana http://github.com/ozeias/js_mask/tree/master
+
+Copyright (c) 2009 Jésus Lopes, released under the MIT license
