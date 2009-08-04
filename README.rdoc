@@ -33,6 +33,12 @@ Other Examples:
 
   Masks for price, use:
     <%= price_us_text_field(:product, :price, :size => 10) %>
+
+== TODO
+
+* Mask price for pt-BR
+* Calendar date select
+* Methods for CPF, CNPJ, zip code, date and more used
     
 Based on plugin:
 JSMask by Ozéias Sant'ana http://github.com/ozeias/js_mask/tree/master
