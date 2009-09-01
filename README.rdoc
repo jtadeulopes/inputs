@@ -12,6 +12,12 @@ Plugin jRails http://github.com/aaronchi/jrails/tree/master
 
   script/plugin install git://github.com/jtadeulopes/inputs.git
 
+== Rake Tasks
+
+Updates javascript files and remove unnecessary files.
+
+  rake inputs:update
+
 == Usage
 
 Add in the head tag:
@@ -31,16 +37,14 @@ Other Examples:
   CPF:
     <%= masked_text_field(:user, :cpf, :mask => '999.999.999-99') %>  
 
-  Masks for price, use:
-    <%= price_us_text_field(:product, :price, :size => 10) %>
-
 == TODO
 
 * Mask price for pt-BR
 * Calendar date select
 * Methods for CPF, CNPJ, zip code, date and more used
     
-Based on plugin:
-JSMask by Ozéias Sant'ana http://github.com/ozeias/js_mask/tree/master
+Based on plugins:
+JSMask by Ozéias Sant'ana - http://github.com/ozeias/js_mask/tree/master
+meioMask by Fabio M. Costa - http://github.com/fabiomcosta/jquery-meiomask/tree/master
 
 Copyright (c) 2009 Jésus Lopes, released under the MIT license
