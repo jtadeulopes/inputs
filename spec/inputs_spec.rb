@@ -11,7 +11,7 @@ describe Inputs do
   describe "method javascript_include_inputs" do
 
     it "should include the necessary files" do
-      javascript_include_inputs.gsub(/([0-9?])/,'').should eql("<script src=\"/javascripts/jquery.meio.mask.min.js\" type=\"text/javascript\"></script><script type=\"text/javascript\">\n//<![CDATA[\n(function($){$(function(){$('input:text').setMask();});})(jQuery);\n//]]>\n</script>")
+      javascript_include_inputs.gsub(/([0-9?])/,'').should eql("<script src=\"/javascripts/jquery.meio.mask.min\" type=\"text/javascript\"></script><script type=\"text/javascript\">\n//<![CDATA[\n(function($){$(function(){$('input:text').setMask();});})(jQuery);\n//]]>\n</script>")
     end
 
   end
