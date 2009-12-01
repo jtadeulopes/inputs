@@ -37,7 +37,7 @@ module Inputs
   #       </script>
   #
   def price_us_text_field(object, method, options = {})
-    raise "[DEPRECATION] price_us_text_field is deprecated, use decimal_us_text_field instead."
+    raise "[DEPRECATION] price_us_text_field is deprecated."
   end
 
   # Add required files
@@ -49,6 +49,24 @@ module Inputs
   def javascript_include_inputs
     javascript_include_tag('jquery.meio.mask.min') +
       javascript_tag("(function($){$(function(){$('input:text').setMask();});})(jQuery);")
+  end
+
+  module Formtastic
+
+    def self.included(base)
+      base.class_eval do
+
+        def string_input(method, options)
+          if options.has_key?(:mask)
+            mask = options.delete(:mask)
+            options.has_key?(:input_html) ? options[:input_html].merge!(:alt => mask) : options.merge!(:input_html => {:alt => mask})
+          end
+          basic_input_helper(:text_field, :string, method, options)
+        end
+
+      end
+    end
+
   end
 
 end

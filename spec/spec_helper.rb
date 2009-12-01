@@ -5,6 +5,25 @@ rescue LoadError
   exit
 end
 
-plugin_spec_dir = File.dirname(__FILE__)
-ActiveRecord::Base.logger = Logger.new(plugin_spec_dir + "/debug.log")
+module InputSpecHelper
 
+  include Inputs
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::FormHelper
+  include ActionView::Helpers::JavaScriptHelper
+  include ActionView::Helpers::AssetTagHelper
+  include ActionController::PolymorphicRoutes
+
+  def self.included(base)
+    base.class_eval do
+      
+      attr_accessor :output_buffer
+      
+      def protect_against_forgery?
+        false
+      end
+      
+    end
+  end
+
+end
