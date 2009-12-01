@@ -37,14 +37,51 @@ Other Examples:
   CPF:
     <%= masked_text_field(:user, :cpf, :mask => '999.999.999-99') %>  
 
-== TODO
+= Use Formtastic?
 
-* Mask price for pt-BR
-* Calendar date select
-* Methods for CPF, CNPJ, zip code, date and more used
+A short description, taken from his {README}[http://github.com/justinfrench/formtastic]
+
+  "Formtastic is a Rails FormBuilder DSL (with some other goodies) to make it far easier to create beautiful, 
+  semantically rich, syntactically awesome, readily stylable and wonderfully accessible HTML forms in your Rails applications."
+
+More information on using the Formtastic, you can find {here(en)}[http://github.com/justinfrench/formtastic] or {here(pt-br)}[http://jlopes.zigotto.com.br/tag/formtastic]
+
+== Usage
+
+New option <b>:mask</b> was added, you can simply write:
+
+  <% semantic_form_for @product do |form| %>
+    <%= form.input :price, :mask => :decimal %>
+    <%= form.commit_button %>
+  <% end %>
+
+Automatically be added to field a mask Price.
+
+You can use other masks, see:
+
+* phone
+* phone-us
+* cpf
+* cnpj
+* date
+* date-us
+* cep
+* time
+* cc
+* integer
+* decimal
+* decimal-us
+* signed-decimal-us
+
+Or create your own type of mask, for example:
+
+  <% semantic_form_for @product do |form| %>
+    <%= form.input :year, :mask => '9999' %>
+    <%= form.commit_button %>
+  <% end %>
     
-Based on plugins:
-JSMask by Ozéias Sant'ana - http://github.com/ozeias/js_mask/tree/master
-meioMask by Fabio M. Costa - http://github.com/fabiomcosta/jquery-meiomask/tree/master
+=== Based on plugins:
+JSMask by Ozéias Sant'ana:: http://github.com/ozeias/js_mask/tree/master
+meioMask by Fabio M. Costa:: http://github.com/fabiomcosta/jquery-meiomask/tree/master
 
 Copyright (c) 2009 Jésus Lopes, released under the MIT license
