@@ -14,6 +14,11 @@ module InputSpecHelper
   include ActionView::Helpers::AssetTagHelper
   include ActionController::PolymorphicRoutes
 
+  class ::Project
+    def name
+    end
+  end
+
   def self.included(base)
     base.class_eval do
       

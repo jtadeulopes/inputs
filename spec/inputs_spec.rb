@@ -81,6 +81,8 @@ describe Inputs, :type => :view do
       @project.stub!(:name).and_return(nil)
       @project.stub!(:new_record?).and_return(true)
       @project.stub!(:errors).and_return(mock('errors', :[] => nil))
+
+      def projects_path; "/projects"; end
     end
 
     it "should have an input with mask for cpf" do
