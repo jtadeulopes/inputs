@@ -56,12 +56,16 @@ module Inputs
     def self.included(base)
       base.class_eval do
 
-        def string_input(method, options)
+        def basic_input_helper(form_helper_method, type, method, options)
           if options.has_key?(:mask)
             mask = options.delete(:mask)
             options.has_key?(:input_html) ? options[:input_html].merge!(:alt => mask) : options.merge!(:input_html => {:alt => mask})
           end
-          basic_input_helper(:text_field, :string, method, options)
+          html_options = options.delete(:input_html) || {}
+          html_options = default_string_options(method, type).merge(html_options) if [:numeric, :string, :password].include?(type)
+
+          self.label(method, options_for_label(options)) <<
+          self.send(form_helper_method, method, html_options)
         end
 
       end
